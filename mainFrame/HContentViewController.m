@@ -32,7 +32,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    	// Do any additional setup after loading the view.
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Left", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(left)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Right", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(right)];	// Do any additional setup after loading the view.
+
+    self.view.backgroundColor = [UIColor grayColor];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    imageView.image = [UIImage imageNamed:@"me"];
+    [self.view addSubview:imageView];
+}
+
+
+- (void)left {
+    [self.drawerController toggleDrawerSide:XHDrawerSideLeft animated:YES completion:NULL];
+}
+
+- (void)right {
+    [self.drawerController toggleDrawerSide:XHDrawerSideRight animated:YES completion:^(BOOL finished) {
+        
+    }];
 }
 
 -(void)dealloc
@@ -62,11 +81,6 @@
     
 }
 
--(void)notifyGoTOLeft
-{
-    [self.delegate notifyGoToLeft:self];
-
-}
 
 
 //这里只管刷新UI的操作，内容应该是先填充到参数中的(UIViewController*) vcToDispay的

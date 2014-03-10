@@ -32,11 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor blackColor];
- 
-//    self.view.backgroundColor = [UIColor colorWithPatternImage:img];
-    
-    
+
     self.titleIV = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0,self.view.frame.size.width, (SYSTEMVERSION>=7.0)? 64 :44 )];
    // self.titleIV.contentMode = UIViewContentModeScaleAspectFill;
     self.titleIV.clipsToBounds = YES;

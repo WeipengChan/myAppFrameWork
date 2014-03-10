@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MainFrameViewController.h"
+#import "JunctionViewController.h"
+#import "CoreDataAppDelegate.h"
 
-
-@interface YAppDelegate : UIResponder <UIApplicationDelegate>
+@interface YAppDelegate : CoreDataAppDelegate <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) MainFrameViewController * mainFrameViewController;
+@property (strong, nonatomic) JunctionViewController * JunctionViewController;
 
 @end

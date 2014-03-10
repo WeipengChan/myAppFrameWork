@@ -6,9 +6,8 @@
 //  Copyright (c) 2013年 YunInfo. All rights reserved.
 //
 
-#import "UISideBarSubViewController.h"
 
-@interface HContentViewController : UISideBarSubViewController
+@interface HContentViewController : UIViewController
 
 @property(nonatomic,retain) UIViewController * currentController;
 

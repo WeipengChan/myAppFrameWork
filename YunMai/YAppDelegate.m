@@ -8,21 +8,63 @@
 
 #import "YAppDelegate.h"
 
+//model Data class
+#import "ArticleContentObject.h"
+#import "PictureOfArticle.h"
+
 @implementation YAppDelegate
+
+@synthesize window = _window;
+
+
+#pragma mark -  异步网络请求测试
+-(void)asynHttptest
+{
+    HttpRequestManager * hrm = [[HttpRequestManager alloc]init];
+    [hrm loadArticleContentUsingArticleId:26649465];
+    hrm.httpRequestFinishedNSDictionaryBlock = ^(NSDictionary * dict){
+        
+        MSDebug(@"%@",dict);
+       // NSMutableArray * array = [[NSMutableArray alloc]init];
+       ArticleContentObject * object = [ArticleContentObject MR_createInContext:self.managedObjectContext];
+        [object setValuesForKeysWithDictionary:dict];
+        [self.managedObjectContext MR_saveToPersistentStoreAndWait];
+        
+    };
+    
+    //
+    // [self asynHttptest];
+    
+    NSArray *  array2 = [PictureOfArticle MR_findAllInContext:self.managedObjectContext];
+    
+    ArticleContentObject *  a1 = [ArticleContentObject MR_findFirst];
+    
+    
+    MSDebug(@"a1.pictureListSet%@ count:%d",a1.pictureListSet,a1.pictureListSet.count);
+    
+    PictureOfArticle * p2 = [[a1.pictureListSet allObjects]objectAtIndex:0];
+    
+    MSDebug(@"%@",p2);
+    
+    MSDebug(@"%@",array2);
+    
+    //p2 和 array2 里的第一个对象描述是一样的
+    
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self pushToMainController];
+   
+
     return YES;
 }
 
 -(void)pushToMainController
 {
-    self.mainFrameViewController = [[MainFrameViewController alloc]init];
-    //    self.mainFrameViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    //    self.window.rootViewController presentModalViewController:self.mainFrameViewController animated:YES;
-    
-    [self setWindowViewVontrollerto:self.mainFrameViewController];
+    self.JunctionViewController = [[JunctionViewController alloc]init];
+ 
+    [self setWindowViewVontrollerto:self.JunctionViewController];
     
 }
 
@@ -65,6 +107,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [super applicationWillTerminate:application];
 }
 
 @end

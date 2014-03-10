@@ -23,6 +23,8 @@
 #import <dirent.h>
 #import <sys/stat.h>
 #import <sys/types.h>
+
+#define V1_2  @"3"
 @implementation NSString (WBEncode)
 - (NSString*)URLEncodedString
 {
@@ -96,6 +98,12 @@ const char * getMD5(const char * str) {
 
 
 @implementation iPhoneTools
+
+
++ (NSString*)getCurrentVersionCode
+{
+    return V1_2;
+}
 
 +(NSString*)nameOfChannelIndex:(NSInteger) index
 {

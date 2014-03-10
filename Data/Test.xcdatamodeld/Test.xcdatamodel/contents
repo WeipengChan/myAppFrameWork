@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3396" systemVersion="12F45" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="ArticleContentObject" representedClassName="ArticleContentObject" syncable="YES">
+        <attribute name="articleId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="articleType" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="articleUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="leaderette" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="originalLink" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publishTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sourceName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sourceStatus" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="pictureListSet" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PictureOfArticle" inverseName="articleContentObject" inverseEntity="PictureOfArticle" syncable="YES"/>
+    </entity>
+    <entity name="ArticleObjectInList" representedClassName="ArticleObjectInList" syncable="YES">
+        <attribute name="articleId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="articleType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="articleUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="columnId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isHot" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isRecommend" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isSpecial" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="originalHeight" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="originalWidth" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publishTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="regionId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reviewNum" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="showBigPic" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sourceId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sourceName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thumbImgUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="topTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="weight" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ContactDetailInfo" representedClassName="ContactDetailInfo" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="telephone" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="info" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ContactInfo" inverseName="details" inverseEntity="ContactInfo" syncable="YES"/>
+    </entity>
+    <entity name="ContactInfo" representedClassName="ContactInfo" syncable="YES">
+        <attribute name="age" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="birthday" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="details" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ContactDetailInfo" inverseName="info" inverseEntity="ContactDetailInfo" syncable="YES"/>
+    </entity>
+    <entity name="HotSearchTags" syncable="YES">
+        <attribute name="articleUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="NewsClassObject" syncable="YES">
+        <attribute name="classId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="NewsparperObject" syncable="YES">
+        <attribute name="listIds" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thumbImgUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="PictureOfArticle" representedClassName="PictureOfArticle" syncable="YES">
+        <attribute name="createTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pictureid" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="pictureMemo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pictureTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pictureUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="articleContentObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ArticleContentObject" inverseName="pictureListSet" inverseEntity="ArticleContentObject" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="ArticleContentObject" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ArticleObjectInList" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ContactDetailInfo" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ContactInfo" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="HotSearchTags" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="NewsClassObject" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="NewsparperObject" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="PictureOfArticle" positionX="0" positionY="0" width="0" height="0"/>
+    </elements>
+</model>

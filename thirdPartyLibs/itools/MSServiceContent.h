@@ -20,6 +20,15 @@
                                    didFailed:(void (^)(NSError *error))failedBlock
                                      finally:(void (^)()) finallyBlock;
 
+//异步提交字符串和NSData到网络
++ (ASIFormDataRequest *)postAsynchronRequest:(NSString *)urlStr
+                                   parameter:(NSDictionary *)parameter
+                                      nsdata:(NSDictionary*)dataParas
+                                 didFinished:(void (^)(NSDictionary *))finishedBlock
+                                   didFailed:(void (^)(NSError *))failedBlock
+                                     finally:(void (^)())finallyBlock;
+
+
 +(NSDictionary *)synRequestForTest:(NSString *)urlStr
                          parameter:(NSDictionary *)parameter;
 @end

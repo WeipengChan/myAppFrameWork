@@ -1,0 +1,5 @@
+// Do not edit
+#define MAGICAL_RECORD_DISPLAY_VERSION @""
+#define MAGICAL_RECORD_VERSION 0
+#define MAGICAL_RECORD_BUILD @""
+// Updated on Thu Mar 6 18:13:47 CST 2014

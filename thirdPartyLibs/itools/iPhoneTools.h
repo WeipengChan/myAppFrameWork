@@ -20,6 +20,9 @@
 @interface iPhoneTools : NSObject
 
 
++ (NSString*)getCurrentVersionCode;
+
+
 //恒大 - 按照cell索引获取菜单名字
 +(NSString*)nameOfChannelIndex:(NSInteger) index;
 //恒大 - 获取动态菜单名字典

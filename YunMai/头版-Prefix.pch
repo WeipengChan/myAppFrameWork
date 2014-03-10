@@ -1,0 +1,49 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import <QuartzCore/QuartzCore.h>
+    #import <CoreData/CoreData.h>
+    #import  "CoreData+MagicalRecord.h"
+
+    #import "iPhoneTools.h"
+    #import "MSUtil.h"
+    #import "common.h"
+    #import "UIImageView+WebCache.h"
+    #import "MSServiceContent.h"
+    #import "HttpRequestManager.h"
+    #import "XHDrawerController.h" //框架需要
+    
+#endif
+
+
+
+#ifdef DEBUG
+#define MS_DEBUG_ENABLE 1
+#else
+#define MS_DEBUG_ENABLE 0
+#endif
+
+#if MS_DEBUG_ENABLE
+#define MSDebug( s, ... ) NSLog( @"[%@(method:%@ line:%d)] debug: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), __LINE__, [NSString stringWithFormat:(s),##__VA_ARGS__] )
+#else
+#define MSDebug( s, ... )
+#endif
+
+
+
+#define SYSTEMVERSION  [[[UIDevice currentDevice] systemVersion] floatValue]
+#define HEADERHEIGHT  (self.view.frame.size.width*0.6)
+#define NAVBARHEIGHT ((SYSTEMVERSION>=7.0)? 64 :44 )
+#define IOS7DELTA   ((SYSTEMVERSION>=7.0)? 20 :0 )

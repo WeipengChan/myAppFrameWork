@@ -23,6 +23,7 @@
     self.sideBarController = nil;
     self.hChannelListViewController = nil;
     self.hContentViewController = nil;
+    self.hInfoCenterController = nil;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -43,9 +44,12 @@
         CGSize size = self.view.frame.size;
         CGRect frame = CGRectMake(0, 0, size.width, size.height);
         
-        self.sideBarController = [[UISideBarViewController alloc]init];
+        self.sideBarController = [[XHDrawerController alloc]init];
+         self.sideBarController.springAnimationOn = YES;
+      
         self.hChannelListViewController = [[HChannelListViewController alloc]init];
         self.hContentViewController = [[HContentViewController alloc]init];
+        self.hInfoCenterController = [[UIInfoCenterViewController alloc]init];
         
         self.sideBarController.view.frame = frame;
         self.hChannelListViewController.view.frame = frame;
@@ -53,15 +57,26 @@
         
         
         
-        self.sideBarController.leftSideBarViewController = self.hChannelListViewController;
-        self.sideBarController.contentViewController = self.hContentViewController;
+        self.sideBarController.leftViewController = self.hChannelListViewController;
+        UINavigationController * nav= [[UINavigationController alloc] initWithRootViewController:self.hContentViewController];
+        //nav.navigationBarHidden = YES;
         
-        
-        self.hChannelListViewController.delegate = self.sideBarController;
-        self.hContentViewController.delegate = self.sideBarController;
+        self.sideBarController.centerViewController = nav;
+        self.sideBarController.rightViewController = self.hInfoCenterController;
+      
     
         [self.view addSubview:_sideBarController.view];
+        
+        [self setMainBacground:nil];
     }
+}
+
+
+-(void)setMainBacground:(UIImage*)img
+{
+    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MenuBackground"]];
+    [backgroundImageView setContentMode:UIViewContentModeCenter];
+    self.sideBarController.backgroundView = backgroundImageView;
 }
 
 - (void)didReceiveMemoryWarning

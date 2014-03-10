@@ -6,9 +6,8 @@
 //  Copyright (c) 2013年 YunInfo. All rights reserved.
 //
 
-#import "UISideBarSubViewController.h"
 
-@interface HChannelListViewController : UISideBarSubViewController<UITableViewDelegate,UITableViewDataSource>
+@interface HChannelListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,retain)UITableView *  tableView ;
 @property(nonatomic,retain)UIImageView *  titleIV;
